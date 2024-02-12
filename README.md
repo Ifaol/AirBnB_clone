@@ -98,10 +98,70 @@ $ echo "help" | ./console.py
 ```bash
 $ ./console.py
 (hbnb) help
+
 Documented commands (type help <topic>):
 ========================================
-EOF  help  quit
+EOF  all  count  create  destroy  help  quit  show  update
 
+(hbnb) quit
+$
+```
+
+```bash
+$ ./console.py
+(hbnb) help create 
+usage: create <class>
+        Create a new class instance and print its id.
+(hbnb) help EOF
+EOF signal to exit the program.
+(hbnb) help show
+usage: show <class> <id> or <class>.show(<1d>)
+        Display the string representation of a class instance of a given id.
+(hbnb) quit
+$
+```
+
+###### For count:
+
+```bash
+$ ./console.py
+(hbnb) help count
+usage: count <class> or <class>.count()
+        Retrieve the number of instances of a given class.
+(hbnb) count BaseModel
+0
+(hbnb) BaseModel.count()
+0
+(hbnb) quit
+$
+```
+
+###### For create:
+
+```bash
+$ ./console.py
+(hbnb) count BaseModel
+0
+(hbnb) create BaseModel
+b2350d4f-7238-4745-9671-2bd9b6acadfb
+(hbnb) count BaseModel
+1
+(hbnb) quit
+$
+```
+
+###### For destroy:
+
+```bash
+$ ./console.py
+(hbnb) help destroy
+usage: destroy <class> <id> or <class>.destroy(<id>)
+        Delete a class instance of a given id.
+(hbnb) count BaseModel
+1
+(hbnb) destroy BaseModel b2350d4f-723 8-4745-9671-2bd9b6acadfb
+(hbnb) count BaseModel
+0
 (hbnb) quit
 $
 ```
@@ -111,24 +171,45 @@ $
 ###### For help:
 
 With "echo" and help command:-
+
 ```bash
 $ echo "help" | ./console.py
 (hbnb)
-
 Documented commands (type help <topic>):
 ========================================
-EOF  help  quit
-(hbnb) 
+EOF  all  count  create  destroy  help  quit  sho\w  update
+
+(hbnb)
 $
 ```
 With "cat" and a file containing help command:-
 ```bash
 $ cat test_help | ./console.py
 (hbnb)
-
 Documented commands (type help <topic>):
 ========================================
-EOF  help  quit
-(hbnb) 
+EOF  all  count  create  destroy  help  quit  sho\w  update
+
+(hbnb)
+$
+```
+
+###### For count, create and show:
+
+With "echo" and the commands:-
+
+```bash
+$ echo "count BaseModel" | ./console.py
+(hbnb) 0
+(hbnb)
+$ echo "create BaseModel" | ./console.py
+(hbnb) 42ebf5d5-1b93-470d-9c74-83cbf5 cfbc98
+(hbnb)
+$ echo "count BaseModel" | ./console.py
+(hbnb) 1
+(hbnb)
+$ echo "show BaseModel 42ebf5d5-1b93-470d-9c74-83cbf5cfbc98" | ./console.py
+(hbnb) [BaseModel] (42ebf5d5-1b93-470 d-9c74-83cbf5cfbc98) {'id': '42ebf5d5-1b93-470d-9c74-83cbf5cfbc98', 'created_at': datetime.datetime(2024, 2, 12 , 6, 24, 54, 319126), 'updated_at': datetime.datetime(2024, 2, 12, 6, 24, 54, 319134)}
+(hbnb)
 $
 ```

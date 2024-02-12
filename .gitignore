@@ -1,0 +1,37 @@
+# Byte-compiled Python files
+*.pyc
+*.pyo
+__pycache__/
+
+# Virtual environment directories
+venv/
+env/
+env*/
+
+# Package distribution directory
+dist/
+
+# Build directory
+build/
+
+# Cache directories
+.pytest_cache/
+.mypy_cache/
+.tox/
+
+# IDE-specific directories and files
+.vscode/
+.idea/
+*.idea/
+
+# Log files
+*.log
+
+# Configuration files that contain sensitive information
+*.conf
+*.ini
+.env
+
+# Emacs backup files
+*~
+#*#
