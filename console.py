@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-"""Defines the HBnB console."""
+"""
+This module defines the HBnB console.
+"""
+
+
 import cmd
 import re
 from shlex import split
@@ -14,6 +18,16 @@ from models.review import Review
 
 
 def parse(arg):
+    """
+    Parse input argument(string) into a list.
+
+    Args:
+        argument (str): Input argument string.
+
+    Returns:
+        list: A list of parsed arguments.
+    """
+
     curly_braces = re.search(r"\{(.*?)\}", arg)
     brackets = re.search(r"\[(.*?)\]", arg)
     if curly_braces is None:
@@ -32,7 +46,8 @@ def parse(arg):
 
 
 class HBNBCommand(cmd.Cmd):
-    """Defines the HolbertonBnB command interpreter.
+    """
+    A class that defines the HolbertonBnB command interpreter.
     Attributes:
         prompt (str): The command prompt.
     """
@@ -53,7 +68,10 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def default(self, arg):
-        """Default behavior for cmd module when input is invalid"""
+        """
+        Handels the default behavior for cmd module.
+        """
+
         argdict = {
             "all": self.do_all,
             "show": self.do_show,
